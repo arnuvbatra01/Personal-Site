@@ -321,13 +321,15 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    padding-top: 80px; /* Add padding to move content down */
 }
 
 /* Fixed Typewriter effect styles */
 .greeting, .name, .title, .description {
-    min-height: 1em;
-    width: 100%;
-    position: relative;
+    font-family: var(--font-mono);
+    margin: 0;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Ensure it's completely hidden initially */
 }
 
 .greeting, .name, .title, .description {
@@ -346,15 +348,12 @@ a:hover {
 
 .greeting {
     color: var(--primary-color);
-    font-family: var(--font-mono);
-    margin-bottom: 1rem;
     font-size: 1.3rem;
     text-shadow: 0 0 10px rgba(0, 184, 169, 0.3);
 }
 
 .name {
     color: var(--text-primary);
-    margin-bottom: 0.2em;
     font-size: 4.2rem;
     text-shadow: 0 0 25px rgba(0, 184, 169, 0.7);
 }
@@ -378,9 +377,13 @@ a:hover {
 }
 
 .hero-btns {
-    opacity: 0;
-    animation: fade-in 1s ease forwards 3s; /* Fade in after the slower text typing completes */
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Ensure it's completely hidden initially */
+    animation: fade-in 1s ease forwards;
+    animation-delay: 3s;
 }
 
 @keyframes fade-in {

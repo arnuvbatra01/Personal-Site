@@ -160,19 +160,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const nameElement = document.querySelector('.name');
         const titleElement = document.querySelector('.title');
         const descriptionElement = document.querySelector('.description');
+        const heroButtons = document.querySelector('.hero-btns');
         
         // Store original text and clear elements
         const elements = [
-            { element: greetingElement, text: greetingElement.textContent, delay: 100 },
-            { element: nameElement, text: nameElement.textContent, delay: 600 },
-            { element: titleElement, text: titleElement.textContent, delay: 1100 },
-            { element: descriptionElement, text: descriptionElement.textContent, delay: 1500 }
+            { element: greetingElement, text: greetingElement.textContent.trim(), delay: 100 },
+            { element: nameElement, text: nameElement.textContent.trim(), delay: 600 },
+            { element: titleElement, text: titleElement.textContent.trim(), delay: 1100 },
+            { element: descriptionElement, text: descriptionElement.textContent.trim(), delay: 1500 }
         ];
         
+        // Clear all text content initially
         elements.forEach(item => {
-            // Clear the text content
             item.element.textContent = '';
-            
+            item.element.style.visibility = 'visible';
+            item.element.style.opacity = '1';
+        });
+
+        // Show hero buttons after delay
+        setTimeout(() => {
+            heroButtons.style.visibility = 'visible';
+        }, 2800);
+        
+        // Type out each element
+        elements.forEach(item => {
             setTimeout(() => {
                 let i = 0;
                 const typeWriter = () => {
@@ -187,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     
-    // Start the typewriter effect after a small delay
-    setTimeout(startTypewriterEffect, 500);
+    // Start the typewriter effect immediately when DOM is loaded
+    startTypewriterEffect();
 
     // Add a circuit animation to the circuit-bg element
     const circuitBg = document.querySelector('.circuit-bg');
