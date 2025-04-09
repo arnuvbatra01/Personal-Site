@@ -213,17 +213,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursorGlow);
     
     // Track if mouse is in hero section
-    let isInHeroSection = false;
+    let isInHeroSection = true; // Set to true by default
     const heroSection = document.querySelector('.hero');
     
-    heroSection.addEventListener('mouseenter', () => {
-        isInHeroSection = true;
-        cursorGlow.style.display = 'block';
-    });
+    // Show cursor glow immediately
+    cursorGlow.style.display = 'block';
     
     heroSection.addEventListener('mouseleave', () => {
         isInHeroSection = false;
         cursorGlow.style.display = 'none';
+    });
+    
+    heroSection.addEventListener('mouseenter', () => {
+        isInHeroSection = true;
+        cursorGlow.style.display = 'block';
     });
     
     // Update cursor glow position when mouse moves
